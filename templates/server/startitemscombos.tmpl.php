@@ -30,7 +30,7 @@
 			  <td align="center" width="22%"><?=$item_charges[$v['item_charges']]?> <?=$v['item_charges']?></td>
 			  <td align="center" width="22%"><?=$gm[$v['gm']]?> <?=$v['gm']?></td>
 			  <td align="center" width="22%"><?=$slot[$v['slot']]?> <?=$v['slot']?></td>
-			  <td align="right"><a href="index.php?editor=loot&id=<?=$v['id']?>"<img src="images/edit2.gif" border="0" title="Edit Starting Item">Edit</a></td>
+			  <td align="right"><a href="index.php?editor=server&id=<?=$v['id']?>&race=<?=$v['race']?>&class=<?=$v['class']?>&deityid=<?=$v['deityid']?>&zoneid=<?=$v['zoneid']?>&itemid=<?=$v['itemid']?>&item_charges=<?=$v['item_charges']?>&gm=<?=$v['gm']?>&slot=<?=$v['slot']?>&action=58"<img src="images/edit2.gif" border="0" title="Edit Starting Item">Edit</a></td>
             </tr>
 <?$x++; endforeach;?>
 <?endif;?>

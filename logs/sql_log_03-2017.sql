@@ -30,3 +30,19 @@ SELECT * FROM starting_items ORDER BY race, class, deity, start_zone - Error: Un
 SELECT * FROM starting_items ORDER BY race, class, deity, start_zone - Error: Unknown column 'deity' in 'order clause'; -- admin (25-Mar-17  14:55:11)
 SELECT * FROM starting_items ORDER BY race, class, deity, start_zone - Error: Unknown column 'deity' in 'order clause'; -- admin (25-Mar-17  14:55:12)
 SELECT * FROM starting_items ORDER BY race, class, deity, start_zone - Error: Unknown column 'deity' in 'order clause'; -- admin (25-Mar-17  14:55:14)
+select starting_items.id, starting_items.race, starting_items.class, starting_items.deityid, 
+starting_items.zoneid, starting_items.itemid, starting_items.item_charges,
+starting_items.gm,starting_items.slot, items.Name 
+from starting_items where starting_items.id =  inner join items on starting_items.itemid = items.id ORDER BY id, race, class, deityid, zoneid - Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'inner join items on starting_items.itemid = items.id ORDER BY id, race, class, d' at line 4; -- admin (25-Mar-17  18:16:45)
+select starting_items.id, starting_items.race, starting_items.class, starting_items.deityid, 
+starting_items.zoneid, starting_items.itemid, starting_items.item_charges,
+starting_items.gm,starting_items.slot, items.Name 
+from starting_items where starting_items.id =  inner join items on starting_items.itemid = items.id ORDER BY id, race, class, deityid, zoneid - Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'inner join items on starting_items.itemid = items.id ORDER BY id, race, class, d' at line 4; -- admin (25-Mar-17  18:18:25)
+select starting_items.id, starting_items.race, starting_items.class, starting_items.deityid, 
+starting_items.zoneid, starting_items.itemid, starting_items.item_charges,
+starting_items.gm,starting_items.slot, items.Name 
+from starting_items where starting_items.id = 1 inner join items on starting_items.itemid = items.id ORDER BY id, race, class, deityid, zoneid - Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'inner join items on starting_items.itemid = items.id ORDER BY id, race, class, d' at line 4; -- admin (25-Mar-17  18:19:45)
+select starting_items.id, starting_items.race, starting_items.class, starting_items.deityid, 
+starting_items.zoneid, starting_items.itemid, starting_items.item_charges,
+starting_items.gm,starting_items.slot, items.Name 
+from starting_items where starting_items.id = 1 inner join items on starting_items.itemid = items.id ORDER BY id, race, class, deityid, zoneid - Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'inner join items on starting_items.itemid = items.id ORDER BY id, race, class, d' at line 4; -- admin (25-Mar-17  18:23:29)

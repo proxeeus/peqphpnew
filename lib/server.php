@@ -544,7 +544,7 @@ switch ($action) {
       $body->set('expansions', $expansions);
     }
     break;
-	case 57: // Starting items
+	case 57: // Starting items Edit Main screen
 	check_admin_authorization();
 	$breadcrumbs .= " >> Starting Equipment Editor";
 	$body = new Template("templates/server/startitemscombos.tmpl.php");
@@ -560,7 +560,25 @@ switch ($action) {
 	  $body->set('gm', $gm);
 	  $body->set('slot', $slot);
 	  $body->set('Name', $name);
-
+	}
+	break;
+	case 58: // Starting items Edit Form
+	check_admin_authorization();
+	$breadcrumbs .= " >> Edit Starting Equipment Entry";
+	$body = new Template("templates/server/startitemsedit.tmpl.php");
+	$id=$_GET["id"];
+	$startitem =getStartItem($id);
+	if ($startitem) {
+	  $body->set('startitem', $startitem);
+      $body->set('races', $races);
+      $body->set('classes', $classes);
+      $body->set('deities', $deities);
+      $body->set('zoneids', $zoneids);
+      $body->set('itemids', $itemids);
+	  $body->set('item_charges', $item_charges);
+	  $body->set('gm', $gm);
+	  $body->set('slot', $slot);
+	  $body->set('Name', $name);
 	}
 	break;
 }
@@ -1245,6 +1263,18 @@ function getStartItemsComboList() {
 starting_items.zoneid, starting_items.itemid, starting_items.item_charges,
 starting_items.gm,starting_items.slot, items.Name 
 from starting_items inner join items on starting_items.itemid = items.id ORDER BY id, race, class, deityid, zoneid";
+  $results = $mysql->query_mult_assoc($query);
+
+  return $results;
+}
+
+function getStartItem($itemid) {
+  global $mysql;
+
+  $query = "select starting_items.id, starting_items.race, starting_items.class, starting_items.deityid, 
+starting_items.zoneid, starting_items.itemid, starting_items.item_charges,
+starting_items.gm,starting_items.slot, items.Name 
+from starting_items inner join items on starting_items.itemid = items.id where starting_items.id = $itemid ORDER BY id, race, class, deityid, zoneid";
   $results = $mysql->query_mult_assoc($query);
 
   return $results;
