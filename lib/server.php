@@ -697,6 +697,7 @@ function get_zones() {
   return $array;
 }
 
+
 function get_launchers() {
   global $mysql;
 
