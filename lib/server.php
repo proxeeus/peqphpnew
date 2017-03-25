@@ -581,6 +581,29 @@ switch ($action) {
 	  $body->set('Name', $name);
 	}
 	break;
+	case 59: // Modify Existing Starting Item
+	check_admin_authorization();
+		$breadcrumbs .= " >> Starting Equipment Editor";
+	$body = new Template("templates/server/startitemscombos.tmpl.php");
+	
+	update_starting_item();
+	
+	$startitemscombolist = getStartItemsComboList();
+	if ($startitemscombolist) {
+	  $body->set('startitemscombolist', $startitemscombolist);
+      $body->set('races', $races);
+      $body->set('classes', $classes);
+      $body->set('deities', $deities);
+      $body->set('zoneids', $zoneids);
+      $body->set('itemids', $itemids);
+	  $body->set('item_charges', $item_charges);
+	  $body->set('gm', $gm);
+	  $body->set('slot', $slot);
+	  $body->set('Name', $name);
+	}
+	
+
+	break;
 }
 
 function get_open_bugs($page_number, $results_per_page, $sort_by) {
@@ -1279,5 +1302,23 @@ from starting_items inner join items on starting_items.itemid = items.id where s
   $results = $mysql->query_mult_assoc($query);
 
   return $results;
+}
+
+function update_starting_item(){
+	global $mysql;
+	
+	$id= ($_POST["id"]);
+	$race = ($_POST["race"]);
+	$class = ($_POST["class"]);
+	$deity = ($_POST["deity"]);
+	$zone = ($_POST["zone"]);
+	$itemid = ($_POST["itemid"]);
+	$item_charges = ($_POST["item_charges"]);
+	$gm = ($_POST["gm"]);
+	$slot = ($_POST["slot"]);
+	
+	$query="update starting_items set race=$race, class=$class, deityid=$deity, zoneid=$zone, itemid=$itemid, item_charges=$item_charges, gm=$gm, slot=$slot where id=$id";
+	
+	$mysql->query_no_result($query);
 }
 ?>

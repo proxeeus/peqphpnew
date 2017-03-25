@@ -44,7 +44,7 @@
 	82 => "Cabilis West",
 	106 => "Cabilis East",
 );
-	
+
 ?>
 	
 	<table class="edit_form">
@@ -63,6 +63,9 @@
 <?$x=0; foreach($startitem as $combo=>$v):?>
           <td class="edit_form_content">
           <form name="startitemedit" method="post" action="index.php?editor=server&id=<?=$v['id']?>&race=<?=$v['race']?>&class=<?=$v['class']?>&deityid=<?=$v['deityid']?>&zoneid=<?=$v['zoneid']?>&itemid=<?=$v['itemid']?>&item_charges=<?=$v['item_charges']?>&gm=<?=$v['gm']?>&slot=<?=$v['slot']?>&action=59">
+					 <strong>ID:</strong> <br>
+            <input class="indented" type="text" size="5" name="id" value="<?=$v['id']?>"><br><br>
+			
 			<strong>Race:<br></strong>
              <select name="race" style="width: 265px;">
 					<?foreach($races as $key=>$value):?>
@@ -72,7 +75,7 @@
 			
 			
 				Class:<br>
-             <select name="race" style="width: 265px;">
+             <select name="class" style="width: 265px;">
 					<?foreach($classes as $key=>$value):?>
 						<option value="<?=$key?>"<?echo ($key == $v['class'])? " selected" : "";?>><?=$key?>: <?=$value?></option>
 					<?endforeach;?>
